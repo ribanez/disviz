@@ -7,7 +7,7 @@ function commonPackageTemplate(model, link, linkText) {
       <div className='hidden-xs'>
         <div className='col-xs-6'>
           <a href={link} target='_blank'>
-            <h4 title={linkText}>{linkText}</h4>
+            
           </a>
         </div>
         <div className="col-xs-3">

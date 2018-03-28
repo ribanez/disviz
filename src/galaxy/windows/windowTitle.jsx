@@ -1,6 +1,21 @@
 import React from 'react';
 import resource from '../utils/resources.js';
 
+
+function parseDate(s) {
+  var data = s.split('\t');
+  var date = data[1]
+  return date;
+}
+
+function parseText(s) {
+  var data = s.split('\t');
+  var name = data[0]
+  return name;
+}
+
+
+
 var maco = require('maco');
 registerDataTemplates();
 
@@ -44,12 +59,7 @@ function registerDataTemplates() {
     if (ctx.id === undefined) return null;
     return (
       <h4 className='window-title'>
-        <span className='node-name node-focus' id={ctx.id}>{ctx.nodeName}</span>
-        <span> has </span>
-        <strong> {ctx.degreeNumber} </strong>
-        <span className={ctx.connectionClassName === 'in' ? 'window-indegree' : 'window-outdgree'}>
-          {ctx.degreeKindName}
-        </span>
+        <span className='node-name node-focus' id={ctx.id}>{parseText(ctx.nodeName)}</span>
       </h4>
     );
   }, React));
@@ -57,7 +67,7 @@ function registerDataTemplates() {
   resource.add('SearchResultWindowViewModel', maco.template(ctx => {
     return (
       <h4 className='window-title'>
-        Found <strong>{ctx.matchesCountString}</strong> matches
+        <strong>{ctx.matchesCountString}</strong> coincidencias encontradas
       </h4>
     );
   }, React));
