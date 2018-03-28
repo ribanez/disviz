@@ -1,11 +1,14 @@
 // espera nodos, links y posiciones en formato json, y un directorio de output
 // crea archivos labels.json, meta.json, links.bin, y positions.bin para la visualización
+// necesita ngraph.forcelayout3d y ngraph.tobinary (se pueden instalar con npm install)
 
 // parametros
 var nodes_file = process.argv[2]
 var links_file = process.argv[3]
 var poss_file  = process.argv[4]
-var out_dir    = process.argv[5]
+var mult       = process.argv[5]
+var out_dir    = process.argv[6]
+
 
 // carga los nodos
 var fs = require('fs');
@@ -43,7 +46,11 @@ for (e = 0; e < link.length; e++) {
 var layout = require('ngraph.forcelayout3d')(graph);
 for (i = 0; i < pos.length; i++) {
     nodeId = nodo[i];
-    layout.setNodePosition(nodeId, pos[i][0], pos[i][1], pos[i][2]);
+    layout.setNodePosition(nodeId, 
+      Math.round(pos[i][0]*mult), 
+      Math.round(pos[i][1]*mult), 
+      Math.round(pos[i][2]*mult)
+    );
 }
 
 // variables para almacenar el archivo binario
