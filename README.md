@@ -11,4 +11,12 @@ npm start
 
 # demo
 
-En desarrollo...
+En desarrollo... 
+
+Algunas imágenes de frases de discursos de Bachelet (2014-2018) las puedes ver acá
+
+![Energías renovables](https://raw.githubusercontent.com/disviz/master/demo/gifs/bachelet_2_energia.gif)
+
+![Salas cuna y jardines infantiles](https://raw.githubusercontent.com/disviz/master/demo/gifs/bachelet_2_salas_cuna.gif)
+
+
