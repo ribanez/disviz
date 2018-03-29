@@ -17,9 +17,11 @@ Algunas imágenes de frases de discursos de Bachelet (2014-2018) las puedes ver 
 
 
 Energía
+
 ![Energías renovables](https://raw.githubusercontent.com/jorgeperezrojas/disviz/master/demo/gifs/bachelet_2_energia.gif)
 
 Salas cuna
+
 ![Salas cuna y jardines infantiles](https://raw.githubusercontent.com/jorgeperezrojas/disviz/master/demo/gifs/bachelet_2_sala_cuna.gif)
 
 
