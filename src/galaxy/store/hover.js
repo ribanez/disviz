@@ -43,8 +43,7 @@ function createDefaultTemplate(viewModel) {
   };
 
   return (
-      <div style={style} className='node-hover-tooltip'>
-        {viewModel.name}
+      <div style={style} className='node-hover-tooltip'>{viewModel.name}
         <span className='in-degree'>{'(' + viewModel.date + ')'}</span>
       </div>
     );

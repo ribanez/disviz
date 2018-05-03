@@ -14,6 +14,12 @@ function parseText(s) {
   return name;
 }
 
+function parsePicLink(s) {
+  var data = s.split('\t');
+  var picLink = data[4]
+  return picLink;
+}
+
 
 
 var maco = require('maco');
@@ -57,11 +63,13 @@ function contentTemplateSelector(type) {
 function registerDataTemplates() {
   resource.add('DegreeWindowViewModel', maco.template(ctx => {
     if (ctx.id === undefined) return null;
-    return (
-      <h4 className='window-title'>
-        <span className='node-name node-focus' id={ctx.id}>{parseText(ctx.nodeName)}</span>
-      </h4>
-    );
+    //return (
+    //  <h4 className='window-title'>
+    //    <span className='node-name node-focus' id={ctx.id}>
+    //    {parseText(ctx.nodeName)}</span>
+    //  </h4>
+    //);
+    return null;
   }, React));
 
   resource.add('SearchResultWindowViewModel', maco.template(ctx => {

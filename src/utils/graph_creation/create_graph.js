@@ -8,6 +8,9 @@ var out_dir    = process.argv[4]
 var max_iter   = process.argv[5]
 var save_each  = process.argv[6]
 
+console.log('hola');
+console.log(max_iter);
+
 // carga los nodos
 var fs = require('fs');
 var nodo = JSON.parse(fs.readFileSync(nodes_file, 'utf8'));
@@ -37,8 +40,8 @@ for (e = 0; e < link.length; e++) {
 // crea el layout
 var createLayout = require('ngraph.offline.layout');
 var layout = createLayout(graph, {
-  iterations: max_iter, 
-  saveEach: save_each, 
+  iterations: 500, 
+  saveEach: 50, 
   outDir: out_dir, 
   layout: require('ngraph.forcelayout3d') 
 });

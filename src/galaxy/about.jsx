@@ -9,12 +9,12 @@ function about() {
     <tr><td align='right'>
      <a className='reset-color' 
         target='_blank'
-        href="https://github.com/anvaka/pm/tree/master/about#software-galaxies-documentation">Viz? 🤔</a>
+        href="https://github.com/jorgeperezrojas/disviz#galaxias-de-discursos">Viz? 🤔</a>
     </td></tr>
     <tr><td align='right'>
      <a className='reset-color'
         target='_blank'
-        href="https://github.com/jorgeperezrojas/discursos">Data? 🤓</a>
+        href="https://github.com/jorgeperezrojas/discursos#discursos-presidenciales-chilenos">Data? 🤓</a>
     </td></tr>
     </tbody>
     </table>

@@ -29,7 +29,7 @@ function windowTitle(props) {
         <div className='no-oveflow col-md-8 col-xs-8'>
         {image}
          <span id={item.id} className='node-focus'>
-            {parseText(item.name)}
+            {parseText(item.name).substr(0,30) + '...'}
           </span>
         </div>
         <div id={item.id} className='in-degree col-md-3 col-xs-3'>

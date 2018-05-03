@@ -38,58 +38,58 @@ function help(x) {
           <h3><center>Manual de operaciones</center></h3>
             <table><tbody>
       <tr>
-        <td colSpan="2"><code className='important-key'>mouse wheel</code></td>
-        <td colSpan="2">show this help</td>
+        <td colSpan="2"><code className='important-key'>Rueda del mouse</code></td>
+        <td colSpan="2">muestra esta ayuda</td>
       </tr>
       <tr className='spacer-row'>
-        <td colSpan='2'><code className='important-key' >any key</code></td>
-        <td colSpan='2'>hide this help</td>
+        <td colSpan='2'><code className='important-key' >Cualquier tecla</code></td>
+        <td colSpan='2'>esconde esta ayuda</td>
       </tr>
       <tr>
       <td><code>W</code></td>
-      <td>Move forward</td>
-      <td><code>Up</code></td>
-      <td>Rotate up</td>
+      <td>Avanzar</td>
+      <td><code>&uarr;</code></td>
+      <td>Rotar arriba</td>
       </tr>
       <tr>
       <td><code>S</code></td>
-      <td>Move backward</td>
-      <td><code>Down</code></td>
-      <td>Rotate down</td>
+      <td>Retroceder</td>
+      <td><code>&darr;</code></td>
+      <td>Rotar abajo</td>
       </tr>
       <tr>
       <td><code>A</code></td>
-      <td>Move left</td>
-      <td><code>Left</code></td>
-      <td>Rotate left</td>
+      <td>Izquierda</td>
+      <td><code>&larr;</code></td>
+      <td>Rotar izquierda</td>
       </tr>
       <tr>
       <td><code>D</code></td>
-      <td>Move right</td>
-      <td><code>Right</code></td>
-      <td>Rotate right</td>
+      <td>Derecha</td>
+      <td><code>&rarr;</code></td>
+      <td>Rotar derecha</td>
       </tr>
       <tr>
       <td><code>Q</code></td>
-      <td>Roll right</td>
+      <td>Girar contra-reloj</td>
       <td><code>R</code></td>
-      <td>Fly up</td>
+      <td>Subir</td>
       </tr>
       <tr>
       <td><code>E</code></td>
-      <td>Roll left</td>
+      <td>Girar según reloj</td>
       <td><code>F</code></td>
-      <td>Fly down</td>
+      <td>Bajar</td>
       </tr>
       <tr>
       <td><code>L</code></td>
-      <td>Toggle links</td>
-      <td><code>spacebar</code></td>
-      <td>Toggle Steering</td>
+      <td>Muestra conexiones</td>
+      <td><code>SPC</code></td>
+      <td>Muestra volante</td>
       </tr>
       <tr>
       <td><code>shift</code></td>
-      <td>Move faster</td>
+      <td>Más rápido</td>
       <td><code></code></td>
       <td></td>
       </tr>

@@ -1,6 +1,9 @@
-Fork para adaptar [https://github.com/anvaka/pm](https://github.com/anvaka/pm) a texto, en particular, frases de discursos de presidentes chilenos, fechas, y links a discursos originales.
+# Galaxias de discursos
 
-# desarrollo local
+Este repositorio contiene visualizaciones de textos de discursos de presidentes chilenos en forma de galaxias.
+Es un fork de [https://github.com/anvaka/pm](https://github.com/anvaka/pm) para adaptarlo a texto, en particular, frases de discursos de presidentes chilenos, fechas, y links a discursos originales e imágenes.
+
+# Desarrollo local
 
 ```
 git clone https://github.com/jorgeperezrojas/disviz.git
@@ -9,7 +12,7 @@ npm i
 npm start
 ```
 
-# demo
+# Demo
 
 En desarrollo... 
 
