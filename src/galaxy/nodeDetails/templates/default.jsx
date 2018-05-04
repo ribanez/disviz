@@ -19,7 +19,7 @@ function template(props) {
               <tr>
                 <td><img src={model.picLink} width="200"/></td>
                 <td>&nbsp;</td>
-                <td>
+                <td valign='top'>
                 <h5 title={model.disc}>
                   <a href={model.link} target='_blank'>
                   {model.date + ' ' + model.disc}</a>

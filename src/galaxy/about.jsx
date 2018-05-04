@@ -2,6 +2,10 @@ import React from 'react';
 export default require('maco').template(about, React);
 
 function about() {
+  var local = encodeURIComponent(window.location.href);
+  var link = 'https://twitter.com/intent/tweet?' + 
+    'text=' + encodeURI('Galaxias de discursos de ') + '&' + 
+    'url=' + local + '&';
   return (
   <div  className='label about' align='right'>
     <table>
@@ -16,6 +20,13 @@ function about() {
         target='_blank'
         href="https://github.com/jorgeperezrojas/discursos#discursos-presidenciales-chilenos">Data? 🤓</a>
     </td></tr>
+    <tr>
+      <td>
+        <a href={link} target='_blank'>
+        Tweet! 🐤
+        </a>
+      </td>
+    </tr>
     </tbody>
     </table>
   </div>
