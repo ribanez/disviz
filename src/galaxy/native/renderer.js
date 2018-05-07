@@ -392,7 +392,7 @@ function sceneRenderer(container) {
     appConfig.off('camera', moveCamera);
     appConfig.off('showLinks', toggleLinks);
 
-    appConfig.off('showLabels', toggleLabels); // TEST RENDER
+    appConfig.off('showLabels', toggleLabels); // RENDER LABELS
 
     // todo: app events?
   }
