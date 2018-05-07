@@ -20,4 +20,4 @@ On-line demo en desarrollo...
 
 Una visualización de frases de discursos de Bachelet (2014-2018) las pueden ver en el siguiente video:
 
-[Demo](https://raw.githubusercontent.com/jorgeperezrojas/disviz/master/demo/demo-01.mp4)
+[Demo](https://twitter.com/perez/status/993291012087967744)

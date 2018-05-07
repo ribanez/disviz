@@ -59,6 +59,11 @@ export default eventMirror([
   'toggleLinks',
 
   /**
+   * Fired when user wants to show or hide labels
+   */
+  'toggleLabels', // TEST RENDER
+
+  /**
    * Requests the application to show "Steering mode" indicator.
    */
   'showSteeringMode',

@@ -24,6 +24,12 @@ import createTouchControl from './touchControl.js';
 import createLineView from './lineView.js';
 import appConfig from './appConfig.js';
 
+// RENDER LABELS
+// POR AHORA SOLO LEE LAS POSICIONES DESDE UN ARCHIVO .js ESTÁTICO
+// todo: cambiarlo para que lea igual como se leen los otros datos
+import { labelsList } from '../store/labels.js';
+// RENDER LABELS
+
 export default sceneRenderer;
 
 var defaultNodeColor = 0xffffffff;
@@ -49,12 +55,31 @@ function sceneRenderer(container) {
 
   appConfig.on('camera', moveCamera);
   appConfig.on('showLinks', toggleLinks);
+  appConfig.on('showLabels', toggleLabels); // TEST RENDER
 
   var api = {
     destroy: destroy
   };
 
   eventify(api);
+
+  // RENDER LABELS
+  // ESTO DEFINITIVAMENTE NO VA ACÁ, PERO MEJOR HECHO QUE PERFECTO! :-)
+  // Crea los elementos de texto a renderizar. Asigna los datos de posición al elemento.
+  // La comunicación con el renderizado es a partir del nombre de la clase de los elementos (MUY HORRIBLE, lo se)
+  var labelsElements = [];
+  for (var i = 0; i < labelsList.length; ++i) {
+    var div = document.createElement('div');
+    div.classList.add('labels-div-element');
+    div.innerHTML = labelsList[i].label;
+    div.dataset.x = labelsList[i].x;
+    div.dataset.y = labelsList[i].y;
+    div.dataset.z = labelsList[i].z;
+    div.dataset.label = labelsList[i].label;
+    container.appendChild(div);
+    labelsElements[i] = div;
+  }
+  // RENDER LABELS
 
   return api;
 
@@ -74,6 +99,7 @@ function sceneRenderer(container) {
     var camera = renderer.camera();
 
     appConfig.setCameraConfig(camera.position, camera.quaternion);
+
   }
 
   function toggleSteering() {
@@ -156,19 +182,23 @@ function sceneRenderer(container) {
     renderLineViewIfNeeded();
   }
 
-  function updateSizes(outLinks, inLinks) {
+  function updateSizes(outLinks, inLinks) { // CAMBIAR TAMAÑO NODOS (TODOS 30)
     var maxInDegree = getMaxSize(inLinks);
     var view = renderer.getParticleView();
     var sizes = view.sizes();
     for (var i = 0; i < sizes.length; ++i) {
-      var degree = inLinks[i];
-      if (degree) {
-        sizes[i] = ((200 / maxInDegree) * degree.length + 15);
-      } else {
-        sizes[i] = 30;
-      }
+    // /*** ESTO LO COMENTÉ  PARA QUE TODOS LOS NODOS TUVIERAN EL MISMO TAMAÑO ***/
+    //   var degree = inLinks[i];
+    //   if (degree) {
+    //     sizes[i] = ((200 / maxInDegree) * degree.length + 15);
+    //   } else {
+    //     sizes[i] = 30;
+    //   }
+      sizes[i] = 30; // CAMBIAR TAMAÑO NODOS (TODOS 30)
     }
+    
     view.sizes(sizes);
+
   }
 
   function getMaxSize(sparseArray) {
@@ -197,7 +227,25 @@ function sceneRenderer(container) {
     } else {
       renderLineViewIfNeeded();
     }
+
   }
+
+  // RENDER LABELS
+  function toggleLabels() {
+    // ESTO NO DEBERÍA HACERLO ASI NI AQUÍ
+    if (appConfig.getShowLabels()) {
+      for(var i = 0; i < labelsElements.length; ++i) {
+          labelsElements[i].style.visibility = 'visible';
+      }
+    }
+    else {
+      for(var i = 0; i < labelsElements.length; ++i) {
+          labelsElements[i].style.visibility = 'hidden';
+      }
+    }
+    return;
+  }
+  // RENDER LABELS
 
   function moveCamera() {
     moveCameraInternal();
@@ -215,6 +263,8 @@ function sceneRenderer(container) {
     if (lookAt) {
       camera.quaternion.set(lookAt.x, lookAt.y, lookAt.z, lookAt.w);
     }
+
+
   }
 
   function destroyHitTest() {
@@ -341,6 +391,8 @@ function sceneRenderer(container) {
     clearInterval(queryUpdateId);
     appConfig.off('camera', moveCamera);
     appConfig.off('showLinks', toggleLinks);
+
+    appConfig.off('showLabels', toggleLabels); // TEST RENDER
 
     // todo: app events?
   }

@@ -123,10 +123,27 @@ h4 {
   pointer-events: none;
   min-width: 200px;
   border: 1px solid @border-color;
+  z-index: 1001;
 
   span {
     margin: 0 5px;
   }
+}
+
+.test-div-element {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  color: @foreground;
+  padding: 2px 3px;
+  border: 0.5px solid @border-color;
+}
+
+.labels-div-element {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  color: @foreground;
+  padding: 2px 3px;
+  border: 0.5px solid @border-color;
 }
 
 .in-degree {
@@ -208,6 +225,7 @@ a.media {
   transform: translateY(-50%);
   font-family: 'Roboto', sans-serif;
   pointer-events: none;
+  z-index: 1001;
   h3 {
     color: @foreground;
     border-bottom: 1px solid white;

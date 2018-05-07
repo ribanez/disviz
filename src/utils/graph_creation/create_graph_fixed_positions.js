@@ -1,6 +1,6 @@
 // espera nodos, links y posiciones en formato json, y un directorio de output
 // crea archivos labels.json, meta.json, links.bin, y positions.bin para la visualización
-// necesita ngraph.forcelayout3d y ngraph.tobinary (se pueden instalar con npm install)
+// necesita ngraph.forcelayout3d y ngraph.tobinary
 
 // parametros
 var nodes_file = process.argv[2]

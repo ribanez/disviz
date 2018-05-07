@@ -26,6 +26,10 @@ function sceneKeyboardBinding(container) {
   function keydown(e) {
     if (e.which === Key.Space) {
       events.toggleSteering.fire();
+    } else if (e.which === Key.K) { // K - toggle labels
+      if (!e.ctrlKey && !e.metaKey) {
+        events.toggleLabels.fire(); // TEST RENDER
+      }
     } else if (e.which === Key.L) { // L - toggle links
       if (!e.ctrlKey && !e.metaKey) {
         events.toggleLinks.fire();

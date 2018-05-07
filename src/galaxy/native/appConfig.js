@@ -8,7 +8,8 @@ var defaultConfig = {
   pos: {x : 0, y: 0, z: 0 },
   lookAt: {x: 0, y: 0, z: 0, w: 1},
   showLinks: true,
-  maxVisibleDistance: 150,
+  showLabels: true, // TEST RENDER
+  maxVisibleDistance: 250,
   scale: 1.75,
   manifestVersion: 0
 };
@@ -23,15 +24,18 @@ function appConfig() {
     getCameraPosition: getCameraPosition,
     getCameraLookAt: getCameraLookAt,
     getShowLinks: getShowLinks,
+    getShowLabels: getShowLabels, // TEST RENDER
     getScaleFactor: getScaleFactor,
     getMaxVisibleEdgeLength: getMaxVisibleEdgeLength,
     setCameraConfig: setCameraConfig,
     setShowLinks: setShowLinks,
+    setShowLabels: setShowLabels, // TEST RENDER
     getManifestVersion: getManifestVersion,
     setManifestVersion: setManifestVersion
   };
 
   appEvents.toggleLinks.on(toggleLinks);
+  appEvents.toggleLabels.on(toggleLabels); // TEST RENDER
   appEvents.queryChanged.on(queryChanged);
 
   eventify(api);
@@ -58,6 +62,10 @@ function appConfig() {
     setShowLinks(!hashConfig.showLinks);
   }
 
+  function toggleLabels() { // TEST RENDER
+    setShowLabels(!hashConfig.showLabels);
+  }
+
   function getCameraLookAt() {
     return hashConfig.lookAt;
   }
@@ -66,11 +74,16 @@ function appConfig() {
     return hashConfig.showLinks;
   }
 
+  function getShowLabels() { // TEST RENDER
+    return hashConfig.showLabels; 
+  }
+
   function queryChanged() {
     var currentHashConfig = parseFromHash(window.location.hash);
     var cameraChanged = !same(currentHashConfig.pos, hashConfig.pos) ||
                         !same(currentHashConfig.lookAt, hashConfig.lookAt);
     var showLinksChanged = hashConfig.showLinks !== currentHashConfig.showLinks;
+    var showLabelsChanged = hashConfig.showLabels !== currentHashConfig.showLabels; // TEST RENDER
 
     if (cameraChanged) {
       setCameraConfig(currentHashConfig.pos, currentHashConfig.lookAt);
@@ -79,6 +92,9 @@ function appConfig() {
     if (showLinksChanged) {
       setShowLinks(currentHashConfig.showLinks);
     }
+    if (showLabelsChanged) { // TEST RENDER
+      setShowLabels(currentHashConfig.showLabels);
+    }
     setManifestVersion(currentHashConfig.manifestVersion);
   }
 
@@ -86,6 +102,13 @@ function appConfig() {
     if (linksVisible === hashConfig.showLinks) return;
     hashConfig.showLinks = linksVisible;
     api.fire('showLinks');
+    updateHash();
+  }
+
+  function setShowLabels(labelsVisible) {
+    if (labelsVisible === hashConfig.showLabels) return;
+    hashConfig.showLabels = labelsVisible;
+    api.fire('showLabels');
     updateHash();
   }
 
@@ -133,6 +156,7 @@ function appConfig() {
       '&ml=' + hashConfig.maxVisibleDistance +
       '&s=' + hashConfig.scale +
       '&l=' + (hashConfig.showLinks ? '1' : '0') +
+      '&k=' + (hashConfig.showLabels ? '1' : '0') +
       '&v=' + hashConfig.manifestVersion;
 
     setHash(hash);
@@ -184,10 +208,13 @@ function appConfig() {
 
     var showLinks = (query.l === '1');
 
+    var showLabels = (query.k === '1'); // TEST RENDER
+
     return {
       pos: normalize(pos),
       lookAt: normalize(lookAt),
       showLinks: showLinks,
+      showLabels: showLabels, // TEST RENDER
       maxVisibleDistance: getNumber(query.ml, defaultConfig.maxVisibleDistance),
       scale: getNumber(query.s, defaultConfig.scale),
       manifestVersion: query.v || defaultConfig.manifestVersion

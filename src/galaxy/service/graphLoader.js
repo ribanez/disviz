@@ -26,6 +26,7 @@ import Promise from 'bluebird';
 
 export default loadGraph;
 
+
 /**
  * @param {string} name of the graph to be downloaded
  * @param {progressCallback} progress notifies when download progress event is
