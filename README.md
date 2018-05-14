@@ -18,6 +18,6 @@ npm start
 
 On-line demo en desarrollo... 
 
-Una visualización de frases de discursos de Bachelet (2014-2018) las pueden ver en el siguiente video:
+Una visualización de frases de discursos de Bachelet (2014-2018) las pueden ver en el siguiente video (link a twitter):
 
 [Demo](https://twitter.com/perez/status/993291012087967744)
