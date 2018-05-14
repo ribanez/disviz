@@ -24,12 +24,6 @@ import createTouchControl from './touchControl.js';
 import createLineView from './lineView.js';
 import appConfig from './appConfig.js';
 
-// RENDER LABELS
-// POR AHORA SOLO LEE LAS POSICIONES DESDE UN ARCHIVO .js ESTÁTICO
-// todo: cambiarlo para que lea igual como se leen los otros datos
-import { labelsList } from '../store/labels.js';
-// RENDER LABELS
-
 export default sceneRenderer;
 
 var defaultNodeColor = 0xffffffff;
@@ -41,6 +35,12 @@ function sceneRenderer(container) {
   var hitTest, lastHighlight, lastHighlightSize, cameraPosition;
   var lineView, links, lineViewNeedsUpdate;
   var queryUpdateId = setInterval(updateQuery, 200);
+
+  // RENDER LABELS
+  var labelsList;
+  var labelsElements = [];
+  appEvents.clusterLabelsDownloaded.on(setClusterLabels);
+  // RENDER LABELS
 
   appEvents.positionsDownloaded.on(setPositions);
   appEvents.linksDownloaded.on(setLinks);
@@ -63,25 +63,28 @@ function sceneRenderer(container) {
 
   eventify(api);
 
+  return api;
+
   // RENDER LABELS
-  // ESTO DEFINITIVAMENTE NO VA ACÁ, PERO MEJOR HECHO QUE PERFECTO! :-)
-  // Crea los elementos de texto a renderizar. Asigna los datos de posición al elemento.
-  // La comunicación con el renderizado es a partir del nombre de la clase de los elementos (MUY HORRIBLE, lo se)
-  var labelsElements = [];
-  for (var i = 0; i < labelsList.length; ++i) {
-    var div = document.createElement('div');
-    div.classList.add('labels-div-element');
-    div.innerHTML = labelsList[i].label;
-    div.dataset.x = labelsList[i].x;
-    div.dataset.y = labelsList[i].y;
-    div.dataset.z = labelsList[i].z;
-    div.dataset.label = labelsList[i].label;
-    container.appendChild(div);
-    labelsElements[i] = div;
+  function setClusterLabels(data) {
+    labelsList = data;
+    
+    // Crea los elementos de texto a renderizar. Asigna los datos de posición al elemento.
+    // La comunicación con el renderizado en Three.js es a partir del nombre de la clase 
+    // de los elementos (MUY HORRIBLE, lo se)
+    for (var i = 0; i < labelsList.length; ++i) {
+      var div = document.createElement('div');
+      div.classList.add('labels-div-element');
+      div.innerHTML = labelsList[i].label;
+      div.dataset.x = labelsList[i].x;
+      div.dataset.y = labelsList[i].y;
+      div.dataset.z = labelsList[i].z;
+      div.dataset.label = labelsList[i].label;
+      container.appendChild(div);
+      labelsElements[i] = div;
+    }
   }
   // RENDER LABELS
-
-  return api;
 
   function accelarate(isPrecise) {
     var input = renderer.input();
@@ -155,6 +158,9 @@ function sceneRenderer(container) {
     hitTest.on('click', handleClick);
     hitTest.on('dblclick', handleDblClick);
     hitTest.on('hitTestReady', adjustMovementSpeed);
+
+
+
   }
 
   function adjustMovementSpeed(tree) {
@@ -264,6 +270,40 @@ function sceneRenderer(container) {
       camera.quaternion.set(lookAt.x, lookAt.y, lookAt.z, lookAt.w);
     }
 
+    // RENDER LABELS
+    // ESTO NO DEBERIA HACERLO EN ESTE MÉTODO!!!
+    // Pone los labels inicialmente en posición
+    if (!labelsElements) return;
+
+    for (var i = 0; i < labelsElements.length; ++i) {
+      var labelElement = labelsElements[i];
+      var x = labelElement.dataset.x;
+      var y = labelElement.dataset.y;
+      var z = labelElement.dataset.z;
+      var position = new window.THREE.Vector3(x,y,z)
+      var proj = position.project(camera);
+      var left = (proj.x + 1)/2 * window.innerWidth;
+      var top = (-proj.y + 1)/2 * window.innerHeight;
+
+      // actualiza posiciones solo si están en el rango visible (ventana), con cierto margen
+      // de otra forma déjalas estáticas fuera del rango
+      if (proj.z < 1 && left >= -500 && top >= -50 && left <= window.innerWidth + 500 && top <= window.innerHeight + 50) { 
+        labelElement.style.left = left + 'px';
+        labelElement.style.top =  top + 'px'; 
+
+        // cambia propiedades del font, z-index y opacidad a partir de la distancia a la cámara
+        var distancia = position.distanceTo(pos)/1000;
+        var sizeFactor = Math.round(distancia*10)/10;
+        labelElement.style.fontSize = 20 - sizeFactor + 'px';
+        labelElement.style.zIndex = Math.round(20 - sizeFactor);
+        labelElement.style.opacity = 1 - Math.pow((sizeFactor - 7)/10,2);
+      }
+      else {
+        labelElement.style.left = '-500px';
+        labelElement.style.top =  '-500px';         
+      }
+    }
+    // RENDER LABELS
 
   }
 
@@ -396,4 +436,5 @@ function sceneRenderer(container) {
 
     // todo: app events?
   }
+
 }

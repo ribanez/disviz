@@ -39,6 +39,10 @@ function loadGraph(name, progress) {
   var outLinks = [];
   var inLinks = [];
 
+  // RENDER LABELS
+  var labelsList2 = [];
+  // RENDER LABELS
+
   // todo: handle errors
   var manifestEndpoint = config.dataUrl + name;
   var galaxyEndpoint = manifestEndpoint;
@@ -49,6 +53,9 @@ function loadGraph(name, progress) {
     .then(loadPositions)
     .then(loadLinks)
     .then(loadLabels)
+    // RENDER LABELS
+    .then(loadClusterLabels)
+    // RENDER LABELS
     .then(convertToGraph);
 
   function convertToGraph() {
@@ -172,6 +179,20 @@ function loadGraph(name, progress) {
     labels = data;
     appEvents.labelsDownloaded.fire(labels);
   }
+
+  // RENDER LABELS
+  function loadClusterLabels() {
+    return request(galaxyEndpoint + '/clusterLabels.json', {
+      responseType: 'json',
+      progress: ""
+    }).then(setClusterLabels);
+  }
+
+  function setClusterLabels(data) {
+    labelsList2 = data;
+    appEvents.clusterLabelsDownloaded.fire(labelsList2);
+  }
+  // RENDER LABELS
 
   function reportProgress(name, file) {
     return function(e) {

@@ -17,6 +17,11 @@ export default eventMirror([
   'labelsDownloaded',
 
   /**
+   * Fired when cluster labels are downloaded
+   */
+  'clusterLabelsDownloaded', // RENDER LABELS
+
+  /**
    * Fired when positions are downloaded
    */
   'positionsDownloaded',
@@ -61,7 +66,7 @@ export default eventMirror([
   /**
    * Fired when user wants to show or hide labels
    */
-  'toggleLabels', // TEST RENDER
+  'toggleLabels', // RENDER LABELS
 
   /**
    * Requests the application to show "Steering mode" indicator.
