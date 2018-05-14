@@ -28,7 +28,7 @@ function sceneKeyboardBinding(container) {
       events.toggleSteering.fire();
     } else if (e.which === Key.K) { // K - toggle labels
       if (!e.ctrlKey && !e.metaKey) {
-        events.toggleLabels.fire(); // TEST RENDER
+        events.toggleLabels.fire(); // RENDER LABELS
       }
     } else if (e.which === Key.L) { // L - toggle links
       if (!e.ctrlKey && !e.metaKey) {

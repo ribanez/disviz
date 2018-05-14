@@ -38,14 +38,6 @@ function help(x) {
           <h3><center>Manual de operaciones</center></h3>
             <table><tbody>
       <tr>
-        <td colSpan="2"><code className='important-key'>Rueda del mouse</code></td>
-        <td colSpan="2">muestra esta ayuda</td>
-      </tr>
-      <tr className='spacer-row'>
-        <td colSpan='2'><code className='important-key' >Cualquier tecla</code></td>
-        <td colSpan='2'>esconde esta ayuda</td>
-      </tr>
-      <tr>
       <td><code>W</code></td>
       <td>Avanzar</td>
       <td><code>&uarr;</code></td>
@@ -70,28 +62,38 @@ function help(x) {
       <td>Rotar derecha</td>
       </tr>
       <tr>
-      <td><code>Q</code></td>
-      <td>Girar contra-reloj</td>
       <td><code>R</code></td>
       <td>Subir</td>
+      <td><code>Q</code></td>
+      <td>Girar contra-reloj</td>
       </tr>
       <tr>
-      <td><code>E</code></td>
-      <td>Girar según reloj</td>
       <td><code>F</code></td>
       <td>Bajar</td>
+      <td><code>E</code></td>
+      <td>Girar según reloj</td>
       </tr>
-      <tr>
-      <td><code>L</code></td>
-      <td>Muestra conexiones</td>
-      <td><code>SPC</code></td>
-      <td>Muestra volante</td>
-      </tr>
-      <tr>
-      <td><code>shift</code></td>
-      <td>Más rápido</td>
+      <tr  className='spacer-row'>
       <td><code></code></td>
       <td></td>
+      <td><code>Shift+</code></td>
+      <td>Todo más rápido</td>
+      </tr>
+      <tr>
+        <td colSpan='1'><code className='important-key' >L</code></td>
+        <td colSpan='3'>muestra/esconde conexiones</td>
+      </tr>
+      <tr>
+        <td colSpan='1'><code className='important-key' >K</code></td>
+        <td colSpan='3'>muestra/esconde etiquetas</td>
+      </tr>
+      <tr>
+        <td colSpan="1"><code className='important-key'>H</code></td>
+        <td colSpan="3">muestra/esconde esta ayuda</td>
+      </tr>
+      <tr>
+        <td colSpan="1"><code className='important-key'>SPC</code></td>
+        <td colSpan="3">muestra/esconde volante</td>
       </tr>
       </tbody></table>
         </div>
@@ -136,6 +138,7 @@ function help(x) {
   }
 
   function handlekey(e) {
+  /* ESTO ESTÁ COMENTADO PARA QUE LA AYUDA NO SE DESACTIVE
     if (Key.isModifier(e)) {
       // ignore modifiers
       return;
@@ -146,6 +149,7 @@ function help(x) {
     if (needsUpdate) {
       x.forceUpdate();
     }
+  */
   }
 
   function handlewheel(e) {
