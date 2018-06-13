@@ -7,7 +7,7 @@ function about() {
     'text=' + encodeURI('Galaxias de discursos de ') + '&' + 
     'url=' + local + '&';
   return (
-  <div  className='label about' align='right'>
+  <div className='aboutt' align='right'>
     <table>
     <tbody>
     <tr><td align='right'>
@@ -22,9 +22,7 @@ function about() {
     </td></tr>
     <tr>
       <td>
-        <a href={link} target='_blank'>
-        Tweet! 🐤
-        </a>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-text="Galaxias de Discursos" data-via="perez" data-show-count="false">Tweet</a>
       </td>
     </tr>
     </tbody>
@@ -32,3 +30,4 @@ function about() {
   </div>
   );
 }
+

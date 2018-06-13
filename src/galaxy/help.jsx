@@ -80,6 +80,10 @@ function help(x) {
       <td>Todo más rápido</td>
       </tr>
       <tr>
+        <td colSpan="1"><code className='important-key'>H</code></td>
+        <td colSpan="3">muestra/esconde esta ayuda</td>
+      </tr>
+      <tr>
         <td colSpan='1'><code className='important-key' >L</code></td>
         <td colSpan='3'>muestra/esconde conexiones</td>
       </tr>
@@ -88,12 +92,8 @@ function help(x) {
         <td colSpan='3'>muestra/esconde etiquetas</td>
       </tr>
       <tr>
-        <td colSpan="1"><code className='important-key'>H</code></td>
-        <td colSpan="3">muestra/esconde esta ayuda</td>
-      </tr>
-      <tr>
         <td colSpan="1"><code className='important-key'>SPC</code></td>
-        <td colSpan="3">muestra/esconde volante</td>
+        <td colSpan="3">activa/desactiva volante por mouse</td>
       </tr>
       </tbody></table>
         </div>

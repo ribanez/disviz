@@ -103,7 +103,7 @@ h4 {
 .about {
   padding: 10px;
   right: 10px;
-  top: 0px;
+  top: 10px;
 }
 
 @media (max-width: @screen-sm-min) {
@@ -214,6 +214,23 @@ a.media {
 
 .error-details {
   color: wheat;
+}
+
+.aboutt {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.55);
+  padding: 1px;
+  right: 2px;
+  top: 2px;
+  font-family: 'Roboto', sans-serif;
+  z-index: 1001;
+  td {
+    color: #999;
+    text-align: right;
+  }
+  td:nth-child(even) {
+    text-align: left;
+  }
 }
 
 .navigation-help {

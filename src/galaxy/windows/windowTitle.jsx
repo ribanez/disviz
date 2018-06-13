@@ -1,27 +1,6 @@
 import React from 'react';
 import resource from '../utils/resources.js';
 
-
-function parseDate(s) {
-  var data = s.split('\t');
-  var date = data[1]
-  return date;
-}
-
-function parseText(s) {
-  var data = s.split('\t');
-  var name = data[0]
-  return name;
-}
-
-function parsePicLink(s) {
-  var data = s.split('\t');
-  var picLink = data[4]
-  return picLink;
-}
-
-
-
 var maco = require('maco');
 registerDataTemplates();
 

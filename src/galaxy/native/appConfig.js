@@ -3,13 +3,14 @@ import eventify from 'ngraph.events';
 import scene from '../store/scene.js';
 import qs from 'qs';
 
+// cx=5765&cy=-6577&cz=-6953&lx=0.3169&ly=0.8527&lz=-0.1965&lw=0.3658&ml=250&s=1.75&l=1&k=1&v=20180501_222122_m40
 
 var defaultConfig = {
-  pos: {x : 0, y: 0, z: 0 },
-  lookAt: {x: 0, y: 0, z: 0, w: 1},
+  pos: {x : 5700, y: -6600, z: -7000 },
+  lookAt: {x: 0.317, y: 0.853, z: -0.197, w: 0.366},
   showLinks: true,
-  showLabels: true, // TEST RENDER
-  maxVisibleDistance: 250,
+  showLabels: true, // RENDER LABELS
+  maxVisibleDistance: 300,
   scale: 1.75,
   manifestVersion: 0
 };
@@ -24,18 +25,18 @@ function appConfig() {
     getCameraPosition: getCameraPosition,
     getCameraLookAt: getCameraLookAt,
     getShowLinks: getShowLinks,
-    getShowLabels: getShowLabels, // TEST RENDER
+    getShowLabels: getShowLabels, // RENDER LABELS
     getScaleFactor: getScaleFactor,
     getMaxVisibleEdgeLength: getMaxVisibleEdgeLength,
     setCameraConfig: setCameraConfig,
     setShowLinks: setShowLinks,
-    setShowLabels: setShowLabels, // TEST RENDER
+    setShowLabels: setShowLabels, // RENDER LABELS
     getManifestVersion: getManifestVersion,
     setManifestVersion: setManifestVersion
   };
 
   appEvents.toggleLinks.on(toggleLinks);
-  appEvents.toggleLabels.on(toggleLabels); // TEST RENDER
+  appEvents.toggleLabels.on(toggleLabels); // RENDER LABELS
   appEvents.queryChanged.on(queryChanged);
 
   eventify(api);
@@ -62,7 +63,7 @@ function appConfig() {
     setShowLinks(!hashConfig.showLinks);
   }
 
-  function toggleLabels() { // TEST RENDER
+  function toggleLabels() { // RENDER LABELS
     setShowLabels(!hashConfig.showLabels);
   }
 
@@ -74,7 +75,7 @@ function appConfig() {
     return hashConfig.showLinks;
   }
 
-  function getShowLabels() { // TEST RENDER
+  function getShowLabels() { // RENDER LABELS
     return hashConfig.showLabels; 
   }
 
@@ -83,7 +84,7 @@ function appConfig() {
     var cameraChanged = !same(currentHashConfig.pos, hashConfig.pos) ||
                         !same(currentHashConfig.lookAt, hashConfig.lookAt);
     var showLinksChanged = hashConfig.showLinks !== currentHashConfig.showLinks;
-    var showLabelsChanged = hashConfig.showLabels !== currentHashConfig.showLabels; // TEST RENDER
+    var showLabelsChanged = hashConfig.showLabels !== currentHashConfig.showLabels; // RENDER LABELS
 
     if (cameraChanged) {
       setCameraConfig(currentHashConfig.pos, currentHashConfig.lookAt);
@@ -92,7 +93,7 @@ function appConfig() {
     if (showLinksChanged) {
       setShowLinks(currentHashConfig.showLinks);
     }
-    if (showLabelsChanged) { // TEST RENDER
+    if (showLabelsChanged) { // RENDER LABELS
       setShowLabels(currentHashConfig.showLabels);
     }
     setManifestVersion(currentHashConfig.manifestVersion);
@@ -208,13 +209,13 @@ function appConfig() {
 
     var showLinks = (query.l === '1');
 
-    var showLabels = (query.k === '1'); // TEST RENDER
+    var showLabels = (query.k === '1'); // RENDER LABELS
 
     return {
       pos: normalize(pos),
       lookAt: normalize(lookAt),
       showLinks: showLinks,
-      showLabels: showLabels, // TEST RENDER
+      showLabels: showLabels, // RENDER LABELS
       maxVisibleDistance: getNumber(query.ml, defaultConfig.maxVisibleDistance),
       scale: getNumber(query.s, defaultConfig.scale),
       manifestVersion: query.v || defaultConfig.manifestVersion

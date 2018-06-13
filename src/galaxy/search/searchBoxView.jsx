@@ -7,7 +7,7 @@ function searchBar(x) {
   x.render = function () {
     return (
       <div className='container row'>
-        <div className='search col-xs-12 col-sm-6 col-md-4'>
+        <div className='search col-xs-9 col-sm-6 col-md-6'>
           <form className='search-form' role='search' onSubmit={runSubmit}>
             <div className='input-group'>
               <input type='text'

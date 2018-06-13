@@ -5,7 +5,7 @@ import linkFinder from './edgeFinder.js';
 export default graph;
 
 function graph(rawGraphLoaderData) {
-  var {labels, outLinks, inLinks, positions} = rawGraphLoaderData;
+  var {labels, outLinks, inLinks, positions, dates, texts, shortTexts, discs, hlinks, picLinks} = rawGraphLoaderData; // dates PRUEBA LOAD
   var empty = [];
 
   var api = {
@@ -89,7 +89,15 @@ function graph(rawGraphLoaderData) {
       id: id,
       name: labels[id],
       out: outLinksCount,
-      in : inLinksCount
+      in : inLinksCount,
+      // LOAD DATA
+      date : dates[id],
+      text : texts[id],
+      shortText : shortTexts[id],
+      disc : discs[id],
+      hlink : hlinks[id],
+      picLink : picLinks[id]
+
     };
   }
 
@@ -100,6 +108,15 @@ function graph(rawGraphLoaderData) {
     }
     return labels[id];
   }
+
+  function getDate(id) {
+    if (!labels) return '';
+    if (id < 0 || id > labels.length) {
+      throw new Error(id + " is outside of labels range");
+    }
+    return dates[id]; 
+  }
+
 
   function getPositions() {
     return positions;

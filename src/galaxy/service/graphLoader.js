@@ -36,6 +36,9 @@ export default loadGraph;
  */
 function loadGraph(name, progress) {
   var positions, labels;
+  // LOAD DATA
+  var dates = [], texts = [], shortTexts = [], discs = [], hlinks = [], picLinks = [];
+  // LOAD DATA 
   var outLinks = [];
   var inLinks = [];
 
@@ -63,7 +66,15 @@ function loadGraph(name, progress) {
       positions: positions,
       labels: labels,
       outLinks: outLinks,
-      inLinks: inLinks
+      inLinks: inLinks,
+      // LOAD DATA
+      dates: dates,
+      texts: texts,
+      shortTexts: shortTexts,
+      discs: discs,
+      hlinks: hlinks,
+      picLinks: picLinks
+      // LOAD DATA 
     });
   }
 
@@ -177,6 +188,20 @@ function loadGraph(name, progress) {
 
   function setLabels(data) {
     labels = data;
+    // LOAD DATA
+    dates = []; 
+    for(var i = 0; i < labels.length; ++i) {
+      data = labels[i].split('\t');
+      texts[i] = data[0];
+      shortTexts[i] = texts[i];
+      if (shortTexts[i].length > 330)
+        shortTexts[i] = shortTexts[i].substring(0, 330) + '...'
+      dates[i] = data[1];
+      discs[i] = data[2];
+      hlinks[i] = data[3];
+      picLinks[i] = data[4];
+    }
+    // LOAD DATA
     appEvents.labelsDownloaded.fire(labels);
   }
 

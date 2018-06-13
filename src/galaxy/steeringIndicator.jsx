@@ -17,7 +17,7 @@ function steeringIndicator(x) {
     return (
       <div className='steering'>
         <div className='inner'></div>
-        <div className="steering-help">Presiona ESPACIO para desactivar el mando por mouse</div>
+        <div className="steering-help"></div>
       </div>
     );
   };

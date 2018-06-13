@@ -42,6 +42,7 @@ function scene(x) {
 
   x.componentDidMount = function() {
     if (!webglEnabled) return;
+    twttr.widgets.load();
     var container = findDOMNode(x.refs.graphContainer);
     nativeRenderer = createNativeRenderer(container);
     keyboard = createKeyboardBindings(container);

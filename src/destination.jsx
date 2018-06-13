@@ -1,6 +1,6 @@
 import React from "react";
 
-const prefix = 'https://raw.githubusercontent.com/wiki/anvaka/pm/images/';
+const prefix = '';
 
 export default class Destination extends React.Component {
   setHoverOn() {
@@ -16,7 +16,7 @@ export default class Destination extends React.Component {
     let props = x.props;
     let isHover = x.state ? x.state.hover : false;
     let imageSrc = prefix + props.media;
-    if (isHover) imageSrc = imageSrc.replace(/_first\.png/, '_150.gif');
+    // if (isHover) imageSrc = imageSrc.replace(/_first\.png/, '_150.gif');
 
     return (
   <a className='media col-md-6 col-lg-4' href={props.href}

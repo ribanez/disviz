@@ -29,4 +29,6 @@ function galaxyPage(x) {
     }
     appEvents.queryChanged.fire();
   }
+
+  // twttr.widgets.load();
 }
