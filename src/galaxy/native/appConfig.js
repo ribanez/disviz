@@ -3,7 +3,7 @@ import eventify from 'ngraph.events';
 import scene from '../store/scene.js';
 import qs from 'qs';
 
-// cx=5765&cy=-6577&cz=-6953&lx=0.3169&ly=0.8527&lz=-0.1965&lw=0.3658&ml=250&s=1.75&l=1&k=1&v=20180501_222122_m40
+// cx=5765&cy=-6577&cz=-6953&lx=0.3169&ly=0.8527&lz=-0.1965&lw=0.3658&ml=250&s=1.75&l=1&k=1&v=20180622_095324_m40
 
 var defaultConfig = {
   pos: {x : 5700, y: -6600, z: -7000 },
