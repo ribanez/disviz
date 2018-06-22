@@ -1,0 +1,3 @@
+dist_trsh:0.145
+min_edges:3
+max_edges:32
