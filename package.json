@@ -1,7 +1,7 @@
 {
   "name": "disviz",
   "version": "1.0.0",
-  "description": "Visualización de Discursos",
+  "description": "Protein Visualization",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,16 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jorgeperezrojas/disviz.git"
+    "url": "https://github.com/ribanez/disviz.git"
   },
   "keywords": [
     "ngraph",
     "visualization",
     "discursos"
   ],
-  "author": "Jorge Pérez (desde Andrei Kashcha)",
+  "author": "Roberto Ibanez (from Jorge Pérez)",
   "license": "MIT",
-  "homepage": "https://github.com/jorgeperezrojas/disviz",
+  "homepage": "https://github.com/ribanez/disviz",
   "devDependencies": {
     "express": "^4.12.3",
     "ngraph.generators": "0.0.15",
@@ -56,6 +56,10 @@
     "unrender": "git+https://github.com/jorgeperezrojas/unrender.git",
     "url-loader": "^0.5.5",
     "webgl-enabled": "^1.0.3",
-    "webpack": "^1.9.11"
+    "webpack": "^1.9.11",
+    "ngraph.graph": "git+https://github.com/anvaka/ngraph.graph.git",
+    "ngraph.forcelayout3d": "git+https://github.com/anvaka/ngraph.forcelayout3d.git",
+    "ngraph.tobinary": "git+https://github.com/anvaka/ngraph.tobinary.git",
+    "ngraph.pixel": "git+https://github.com/anvaka/ngraph.pixel.git"
   }
 }
