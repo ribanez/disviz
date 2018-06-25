@@ -10,7 +10,7 @@ export default class WelcomePage extends React.Component {
         <div className='media-list'>
 
           <Destination description='top500'
-                      href='#/top500'
+                      href='#galaxy/top500'
                       media=''
                       name='top500'/>
         </div>
